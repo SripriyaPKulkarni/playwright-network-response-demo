@@ -1,37 +1,29 @@
 import { expect } from "@playwright/test";
-import test from "../testMuAI-setup";
+import test from "../testmuai-setup";
 import dotenv from "dotenv";
 dotenv.config();
 
+const baseUrl = "https://ecommerce-playground.lambdatest.io";
+
 test("API tests to check URL content", async ({ page }) => {
- await page.goto("https://ecommerce-playground.lambdatest.io");
+  const response = await page.goto(baseUrl);
+  await expect(page).toHaveTitle("Your Store");
 
+  expect(response?.status()).toBe(200);
 
- // Expect a title "to contain" a substring.
- await expect(page).toHaveTitle("Your Store");
+  await page.hover(
+    '//a[@role="button"]//span[@class="title"][normalize-space()="My account"]'
+  );
+  await page.locator("text=Login").click();
+  await page.locator("#input-email").fill("lambdatestforplaywright@gmail.com");
+  await page.locator('input[name="password"]').fill("lambdatestforplaywright");
+  await page.locator('//input[@value="Login"]').click();
 
+  await page
+    .locator("//div[@id='entry_217822']//input[@placeholder='Search For Products']")
+    .fill("Camera");
 
- await page.hover(
-   '//a[@role="button"]//span[@class="title"][normalize-space()="My account"]'
- );
- await page.locator("text=Login").click();
- await page.locator("#input-email").fill("lambdatestforplaywright@gmail.com");
- await page.locator('input[name="password"]').fill("lambdatestforplaywright");
- await page.locator('//input[@value="Login"]').click();
-
-
- await page
-   .locator(
-     "//div[@id='entry_217822']//input[@placeholder='Search For Products']"
-   )
-   .fill("Camera");
-
-
- // Start waiting for the specific API response *before* clicking
- const responsePromise = page.waitForResponse(
-   (response) =>
-     response.url().includes("lambdatest.io") && response.status() === 200
- );
+  console.log("API test flow completed, page loaded and form actions executed.");
 });
 
 

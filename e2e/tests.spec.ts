@@ -1,58 +1,42 @@
 import { expect } from "@playwright/test";
-import test from "../testMuAI-setup";
+import test from "../testmuai-setup";
 import dotenv from "dotenv";
 dotenv.config();
 
-test("API tests headers", async ({ page }) => {
-  await page.goto("https://ecommerce-playground.lambdatest.io");
+const baseUrl = "https://ecommerce-playground.lambdatest.io";
 
-  // Expect a title "to contain" a substring.
+test("API tests headers", async ({ page }) => {
+  const response = await page.goto(baseUrl);
   await expect(page).toHaveTitle("Your Store");
-  const response = await page.waitForResponse(
-    (resp) => resp.url().includes("lambdatest.io") && resp.status() === 200,
-    { timeout: 60000 },
-  );
-  const apiresponse = response.headers();
-  console.log(apiresponse);
+
+  expect(response?.status()).toBe(200);
+  console.log(response?.headers());
 });
 
 test("API tests response all headers method", async ({ page }) => {
-  await page.goto("https://ecommerce-playground.lambdatest.io");
-
-  // Expect a title "to contain" a substring.
+  const response = await page.goto(baseUrl);
   await expect(page).toHaveTitle("Your Store");
-  const response = await page.waitForResponse(
-    (resp) => resp.url().includes("lambdatest.io") && resp.status() === 200,
-    { timeout: 60000 },
-  );
-  const apiresponse = Object.entries(response.headers());
-  console.log(apiresponse);
+
+  expect(response?.status()).toBe(200);
+  const headersArray = Object.entries(response?.headers() || {});
+  console.log(headersArray);
 });
 
 test("API tests response headersArray", async ({ page }) => {
-  await page.goto("https://ecommerce-playground.lambdatest.io");
-
-  // Expect a title "to contain" a substring.
+  const response = await page.goto(baseUrl);
   await expect(page).toHaveTitle("Your Store");
-  const response = await page.waitForResponse(
-    (resp) => resp.url().includes("lambdatest.io") && resp.status() === 200,
-    { timeout: 60000 },
-  );
-  const apiresponse = await response.headersArray();
-  console.log(apiresponse);
+
+  expect(response?.status()).toBe(200);
+  const headersArray = Object.entries(response?.headers() || {});
+  console.log(headersArray);
 });
 
 
 test("API tests response OK", async ({ page }) => {
-  await page.goto("https://ecommerce-playground.lambdatest.io");
-
-  // Expect a title "to contain" a substring.
+  const response = await page.goto(baseUrl);
   await expect(page).toHaveTitle("Your Store");
-  const response = await page.waitForResponse(
-    (resp) => resp.url().includes("lambdatest.io") && resp.status() === 200,
-    { timeout: 60000 },
-  );
-  const apiresponse = response.status() === 200;
-  console.log(apiresponse);
+
+  expect(response?.status()).toBe(200);
+  console.log("Status OK: ", response?.status() === 200);
 });
 
