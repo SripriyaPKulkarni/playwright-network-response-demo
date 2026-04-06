@@ -4,7 +4,7 @@ This is the repository created as part of integrating LambdaTest Cloud with Play
 
 ## Prerequisites
 1. Node JS
-2. Account in LamdaTest Cloud - https://lambdatest.com/
+2. Account in LamdaTest Cloud - https://www.testmuai.com/
 3. Any IDE (Preferrably VS CODE)
 
 ## Installation
