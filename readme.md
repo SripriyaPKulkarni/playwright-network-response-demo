@@ -12,11 +12,11 @@ This is the repository created as part of integrating LambdaTest Cloud with Play
 2. Install dependencies by executing the command `npm install`
 
 ## Execution
-1. Update your LambdaTest username and Access Key inn the `.env` file
+1. Update your TestMu AI username and Access Key inn the `.env` file
 2. Execute the test using command 
     - `npm run test` --> To execute all test in all browser + OS mentioned in the Project(playwright.config.ts)
     - `npm run <OS>:<Browser>` -> To execute all test in specific browser + OS mentioned. Sample command such as `npm run win11:chrome` or `npm run mac:chrome` Refer to package.json scripts section to know supporting OS+Browser
-3. Verify the test execution in the LambdaTest Dashboard
+3. Verify the test execution in the TestMu AI Dashboard
 
 <h3><p dir="auto"><g-emoji class="g-emoji" alias="dna" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f9ec.png">🧬</g-emoji> Need Assistance?</p></h3>
 
