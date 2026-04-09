@@ -1,4 +1,4 @@
-# Playwright - Typescript Integrated with LambdaTest
+# Playwright - Typescript Integrated with TestMu AI
 
 This is the repository created as part of integrating LambdaTest Cloud with Playwright-Typescript.
 
