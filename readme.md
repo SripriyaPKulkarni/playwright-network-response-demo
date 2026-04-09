@@ -1,6 +1,6 @@
 # Playwright - Typescript Integrated with TestMu AI
 
-This is the repository created as part of integrating LambdaTest Cloud with Playwright-Typescript.
+This is the repository created as part of integrating TestMu AI Cloud with Playwright-Typescript.
 
 ## Prerequisites
 1. Node JS
